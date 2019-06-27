@@ -40,6 +40,7 @@ class LinkedList {
       values.push(temp.value);
       temp = temp.next;
     }
+    console.log(values);
     return values;
   }
 
@@ -93,6 +94,24 @@ class LinkedList {
     this.print()
 
   }
+
+  reverse() {
+    let first = this.head;
+    let second = this.head.next;
+    
+
+    while(second) {
+      let third = second.next;
+      second.next = first;
+      first = second;
+      second = third;
+    }
+    this.tail = this.head;
+    this.head.next = null;
+    this.head = first;
+    
+    this.print();
+  }
 }
 
 let linkedList = new LinkedList(10);
@@ -102,5 +121,6 @@ linkedList.append(11);
 linkedList.insert(7, 0);
 linkedList.insert(8, 1);
 linkedList.remove(3);
-console.log(linkedList.print());
-console.log(linkedList)
+linkedList.print();
+// console.log(linkedList)
+console.log(linkedList.reverse())
